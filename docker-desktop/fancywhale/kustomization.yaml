@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: fancywhale
 resources:
   - namespace.yaml
+  - release.yaml
