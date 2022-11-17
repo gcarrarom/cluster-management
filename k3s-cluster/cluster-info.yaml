@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  public-ip: 142.59.174.17 
+kind: ConfigMap
+metadata:
+  name: domain-info
+  namespace: fancywhale
