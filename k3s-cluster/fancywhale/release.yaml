@@ -1,0 +1,31 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: fancylanding
+  namespace: fancywhale
+spec:
+  interval: 1m
+  url: https://github.com/gcarrarom/fancylanding
+  ref:
+    branch: main
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: fancylanding
+  namespace: fancywhale
+spec:
+  releaseName: fancylanding
+  interval: 5m
+  chart:
+    spec:
+      chart: charts/fancylanding
+      sourceRef:
+        kind: GitRepository
+        name: fancylanding
+        namespace: fancywhale
+      interval: 1m
+  values:
+    image:
+      repo: gcarrarom/landing
+      tag: 0.0.7
