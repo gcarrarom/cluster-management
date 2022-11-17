@@ -19,7 +19,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: ./charts/fancylanding
+      chart: charts/fancylanding
       sourceRef:
         kind: GitRepository
         name: fancylanding
