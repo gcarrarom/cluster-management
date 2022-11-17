@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: test
-  namespace: fancywhale
-  labels:
-    app: fancylanding
-data:
-  my-information: something
