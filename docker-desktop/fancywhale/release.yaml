@@ -5,7 +5,7 @@ metadata:
   namespace: fancywhale
 spec:
   interval: 1m
-  url: https://github.com/gcarrarom/fancylanding-chart
+  url: https://github.com/gcarrarom/fancylanding
   ref:
     branch: main
 ---
