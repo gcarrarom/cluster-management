@@ -29,6 +29,7 @@ spec:
     image:
       repo: rcarraro/questionario
       tag: 1
+    port: 5000
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -50,3 +51,4 @@ spec:
     image:
       repo: rcarraro/pagina
       tag: 3
+    port: 80
