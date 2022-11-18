@@ -1,0 +1,52 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: fancychart
+  namespace: rafa
+spec:
+  interval: 1m
+  url: https://github.com/gcarrarom/fancychart
+  ref:
+    branch: main
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: questionario
+  namespace: rafa
+spec:
+  releaseName: questionario
+  interval: 5m
+  chart:
+    spec:
+      chart: main
+      sourceRef:
+        kind: GitRepository
+        name: fancychart
+        namespace: rafa
+      interval: 1m
+  values:
+    image:
+      repo: rcarraro/questionario
+      tag: 1
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: pagina
+  namespace: rafa
+spec:
+  releaseName: pagina
+  interval: 5m
+  chart:
+    spec:
+      chart: main
+      sourceRef:
+        kind: GitRepository
+        name: fancychart
+        namespace: rafa
+      interval: 1m
+  values:
+    image:
+      repo: rcarraro/pagina
+      tag: 3
