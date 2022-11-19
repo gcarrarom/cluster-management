@@ -50,5 +50,5 @@ spec:
   values:
     image:
       repo: rcarraro/pagina
-      tag: 6
+      tag: 7
     port: 80
