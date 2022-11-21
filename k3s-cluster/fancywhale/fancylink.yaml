@@ -23,6 +23,29 @@ spec:
       DEFAULT_DOMAIN: fancywhale.link
       IS_HTTPS_ENABLED: "true"
       GEOLITE_LICENSE_KEY: CFcARleAPNQaUKr2
-    domain: fancywhale.link
-    is_root: true
+    url: fancywhale.link
+    clusterissuer: letsencrypt-fancylink
+--- 
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: link-admin
+  namespace: fancywhale
+spec:
+  releaseName: link
+  interval: 5m
+  chart:
+    spec:
+      chart: main
+      sourceRef:
+        kind: GitRepository
+        name: fancychart
+        namespace: fancywhale
+      interval: 1m
+  values:
+    image:
+      repo: shlinkio/shlink-web-client
+      tag: stable
+    port: 80
+    url: admin.fancywhale.link
     clusterissuer: letsencrypt-fancylink
