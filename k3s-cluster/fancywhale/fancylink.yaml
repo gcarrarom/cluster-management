@@ -25,3 +25,4 @@ spec:
       GEOLITE_LICENSE_KEY: CFcARleAPNQaUKr2
     domain: fancywhale.link
     is_root: true
+    clusterissuer: letsencrypt-fancylink
