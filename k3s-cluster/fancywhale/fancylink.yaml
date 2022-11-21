@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: fancylanding
+  namespace: fancywhale
+spec:
+  releaseName: fancylanding
+  interval: 5m
+  chart:
+    spec:
+      chart: main
+      sourceRef:
+        kind: GitRepository
+        name: fancychart
+        namespace: fancywhale
+      interval: 1m
+  values:
+    image:
+      repo: shlinkio/shlink
+      tag: stable
+    port: 8080
+    env:
+      DEFAULT_DOMAIN: fancywhale.link
+      IS_HTTPS_ENABLED: true
+      GEOLITE_LICENSE_KEY: CFcARleAPNQaUKr2
