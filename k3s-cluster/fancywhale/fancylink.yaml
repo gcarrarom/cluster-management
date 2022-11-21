@@ -32,7 +32,7 @@ metadata:
   name: link-admin
   namespace: fancywhale
 spec:
-  releaseName: link
+  releaseName: link-admin
   interval: 5m
   chart:
     spec:
