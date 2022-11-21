@@ -23,3 +23,4 @@ spec:
       DEFAULT_DOMAIN: fancywhale.link
       IS_HTTPS_ENABLED: true
       GEOLITE_LICENSE_KEY: CFcARleAPNQaUKr2
+    domain: fancywhale.link
