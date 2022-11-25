@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: novena
+  namespace: novena
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: main
+      sourceRef:
+        kind: GitRepository
+        name: fancychart
+        namespace: novena
+      interval: 1m
+  values:
+    image:
+      repo: registry.fancywhale.ca/fancygui/novena-2022
+      tag: 0
+      pullSecrets:
+      - registry-fancywhale-ca
+    env:
+      baseURL: https://novena.fancywhale.ca
+    port: 1313
+    ingress:
+      annotations:
+        nginx.ingress.kubernetes.io/auth-type: basic
+        nginx.ingress.kubernetes.io/auth-secret: basic-auth
+        nginx.ingress.kubernetes.io/auth-realm: 'Autenticação necessária'
