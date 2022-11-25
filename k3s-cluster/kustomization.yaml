@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- cert-manager/fancylink-issuer.yaml
+- changedetection/fancychart.yaml
+- changedetection/release.yaml
+- cluster-info.yaml
+- fancywhale/fancychart.yaml
+- fancywhale/fancylink.yaml
+- fancywhale/namespace.yaml
+- fancywhale/release.yaml
+- flux-system
+- novena/fancychart.yaml
+- novena/namespace.yaml
+- rafa/namespace.yaml
+- rafa/release.yaml
