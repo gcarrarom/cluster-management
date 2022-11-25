@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: novena
-  namespace: novena
+  namespace: novena2
 spec:
   interval: 5m
   chart:
@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: fancychart
-        namespace: novena
+        namespace: novena2
       interval: 1m
   values:
     image:

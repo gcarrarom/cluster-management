@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
   name: fancychart
-  namespace: novena
+  namespace: novena2
 spec:
   interval: 1m
   url: https://github.com/gcarrarom/fancychart
