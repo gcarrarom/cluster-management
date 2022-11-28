@@ -15,7 +15,7 @@ spec:
       interval: 1m
   values:
     image:
-      repo: gcarrarom/novena-2022
+      repo: gcarrarom/novena
       tag: 0.2.0
     env:
       baseURL: https://novena.fancywhale.ca
