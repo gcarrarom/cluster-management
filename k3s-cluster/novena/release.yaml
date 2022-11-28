@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: novena
-  namespace: novena2
+  namespace: novena
 spec:
   interval: 5m
   chart:
@@ -11,14 +11,12 @@ spec:
       sourceRef:
         kind: GitRepository
         name: fancychart
-        namespace: novena2
+        namespace: novena
       interval: 1m
   values:
     image:
-      repo: registry.fancywhale.ca/fancygui/novena-2022
-      tag: 0
-      pullSecrets:
-      - registry-fancywhale-ca
+      repo: gcarrarom/novena-2022
+      tag: 0.1.2
     env:
       baseURL: https://novena.fancywhale.ca
     port: 1313
