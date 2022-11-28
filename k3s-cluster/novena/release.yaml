@@ -16,7 +16,7 @@ spec:
   values:
     image:
       repo: gcarrarom/novena
-      tag: 0.2.1
+      tag: 0.2.2
     env:
       baseURL: https://novena.fancywhale.ca
     port: 1313
