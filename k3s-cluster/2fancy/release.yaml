@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: 2fancy
+  name: release2fancy
   namespace: 2fancy
 spec:
   interval: 5m
