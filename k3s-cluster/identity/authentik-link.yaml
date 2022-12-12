@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-fancylink
+  name: authentik-link
+  namespace: identity
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: admin.fancywhale.link
+    http:
+      paths:
+      - backend:
+          service:
+            name: authentik
+            port:
+              name: http
+        path: /outpost.goauthentik.io
+        pathType: Prefix
+  tls:
+  - hosts:
+    - admin.fancywhale.link
+    secretName: admin-fancywhale-link-tls
