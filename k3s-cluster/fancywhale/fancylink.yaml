@@ -54,6 +54,13 @@ spec:
     image:
       repo: shlinkio/shlink-web-client
       tag: stable
+    envFromSecret:
+    - name: SHLINK_SERVER_API_KEY
+      secretName: link-api-key
+      key: api_key
+    env:
+      SHLINK_SERVER_URL: https://fancywhale.link
+      SHLINK_SERVER_NAME: "Fancy Links"
     port: 80
     url: admin.fancywhale.link
     clusterissuer: letsencrypt-fancylink
