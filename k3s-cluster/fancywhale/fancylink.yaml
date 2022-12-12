@@ -1,3 +1,31 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: bitnami
+  namespace: fancywhale
+spec:
+  interval: 1m
+  url: https://charts.bitnami.com/bitnami
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mariadb
+  namespace: fancywhale
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: mariadb
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: fancywhale
+      interval: 1m
+  values:
+    auth:
+      existingSecret: maria-secret
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -22,6 +50,13 @@ spec:
       DEFAULT_DOMAIN: fancywhale.link
       IS_HTTPS_ENABLED: "true"
       GEOLITE_LICENSE_KEY: CFcARleAPNQaUKr2
+      DB_DRIVER: maria
+      DB_USER: root
+      DB_HOST: mariadb
+    envFromSecret:
+    - name: DB_PASSWORD
+      secretName: maria-secret
+      key: mariadb-root-password
     url: fancywhale.link
     clusterissuer: letsencrypt-fancylink
 --- 
