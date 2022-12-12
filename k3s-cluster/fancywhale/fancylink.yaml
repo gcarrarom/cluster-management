@@ -16,7 +16,7 @@ spec:
   values:
     image:
       repo: shlinkio/shlink
-      tag: stable
+      tag: latest
     port: 8080
     env:
       DEFAULT_DOMAIN: fancywhale.link
