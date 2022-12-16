@@ -16,7 +16,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: mariadb
+      chart: longhorn
       sourceRef:
         kind: HelmRepository
         name: longhorn
