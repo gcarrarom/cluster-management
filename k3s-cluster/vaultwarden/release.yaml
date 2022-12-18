@@ -25,3 +25,8 @@ spec:
   values:
     auth:
       existingSecret: maria-secret
+    primary:
+      persistence:
+        enabled: true
+        existingClaim: mariadb-vaultwarden
+        
