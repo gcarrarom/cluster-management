@@ -6,3 +6,27 @@ metadata:
 spec:
   interval: 1m
   url: https://charts.bitnami.com/bitnami
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mariadb
+  namespace: vaultwarden
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: mariadb
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: vaultwarden
+      interval: 1m
+  values:
+    auth:
+      existingSecret: maria-secret
+    primary:
+      persistence:
+        enabled: true
+        existingClaim: mariadb-vaultwarden
+      
