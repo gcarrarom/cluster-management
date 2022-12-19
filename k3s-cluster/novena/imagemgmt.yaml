@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: novena
+  namespace: novena
+spec:
+  image: gcarrarom/novena
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: novena
+  namespace: novena
+spec:
+  imageRepositoryRef:
+    name: novena
+  policy:
+    semver:
+      range: ">0.7.0"
