@@ -29,4 +29,45 @@ spec:
       persistence:
         enabled: true
         existingClaim: mariadb-vaultwarden
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vault
+  namespace: vaultwarden
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: main
+      sourceRef:
+        kind: GitRepository
+        name: fancychart
+        namespace: vaultwarden
+      interval: 1m
+  values:
+    image:
+      repo: vaultwarden/server
+      tag: 1.26.0
+    port: 80
+    recreate: true
+    volumes:
+    - name: vaultwarden-data
+      path: /data
+    envFromSecret:
+    - secretName: vaultwarden-secrets
+      secretRef: true
+    ingress:
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+        nginx.ingress.kubernetes.io/proxy-body-size: 1G
+        nginx.org/proxy-body-size: 1G
+        nginx.org/client-max-body-size: "1G"
+        nginx.ingress.kubernetes.io/client-max-body-size: 1G
+        nginx.org/proxy-connect-timeout: 3600s
+        nginx.org/proxy-read-timeout: 3600s
+        nginx.org/proxy-send-timeout: 3600s
+        nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
       
