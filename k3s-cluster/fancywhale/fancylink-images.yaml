@@ -1,0 +1,20 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: fancylink
+  namespace: flux-system
+spec:
+  image: shlinkio/shlink
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: fancylink
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: fancylink
+  policy:
+    semver:
+      range: ">3.4.0"

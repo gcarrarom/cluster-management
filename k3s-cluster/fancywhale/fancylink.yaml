@@ -43,8 +43,8 @@ spec:
       interval: 1m
   values:
     image:
-      repo: shlinkio/shlink
-      tag: latest
+      repo: shlinkio/shlink # {"$imagepolicy": "flux-system:fancylink:name"}
+      tag: latest # {"$imagepolicy": "flux-system:fancylink:tag"}
     port: 8080
     env:
       DEFAULT_DOMAIN: fancywhale.link
