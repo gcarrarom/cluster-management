@@ -17,4 +17,4 @@ spec:
     name: fancylink
   policy:
     semver:
-      range: ">3.4.0"
+      range: ">=3.4.0"
