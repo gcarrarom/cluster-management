@@ -87,8 +87,8 @@ spec:
         nginx.ingress.kubernetes.io/auth-snippet: |
           proxy_set_header X-Forwarded-Host $http_host;
     image:
-      repo: shlinkio/shlink-web-client
-      tag: stable
+      repo: shlinkio/shlink-web-client # {"$imagepolicy": "flux-system:fancylink-admin:name"}
+      tag: stable # {"$imagepolicy": "flux-system:fancylink-admin:tag"}
     envFromSecret:
     - name: SHLINK_SERVER_API_KEY
       secretName: link-api-key
