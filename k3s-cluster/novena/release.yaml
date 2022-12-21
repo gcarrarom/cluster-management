@@ -16,7 +16,7 @@ spec:
   values:
     image:
       repo: gcarrarom/novena # {"$imagepolicy": "flux-system:novena:name"}
-      tag: 0.8.0 # {"$imagepolicy": "flux-system:novena:tag"}
+      tag: 0.8.1 # {"$imagepolicy": "flux-system:novena:tag"}
     env:
       baseURL: https://novena.fancywhale.ca
     port: 1313
