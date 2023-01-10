@@ -1,3 +1,24 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: changedetection
+  namespace: flux-system
+spec:
+  image: dgtlmoon/changedetection.io
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: changedetection
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: changedetection
+  policy:
+    semver:
+      range: '>=0.40.0.4'
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -15,6 +36,6 @@ spec:
       interval: 1m
   values:
     image:
-      repo: dgtlmoon/changedetection.io
-      tag: 0.40.0.4
+      repo: dgtlmoon/changedetection.io # {"$imagepolicy": "flux-system:changedetection:name"}
+      tag: 0.40.0.4 # {"$imagepolicy": "flux-system:changedetection:tag"}
     port: 5000
