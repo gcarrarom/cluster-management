@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nocodb
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: main
+      sourceRef:
+        kind: GitRepository
+        name: fancychart
+      interval: 1m
+  values:
+    image:
+      repo: nocodb/nocodb
+      tag: latest
+    port: 8080
+
