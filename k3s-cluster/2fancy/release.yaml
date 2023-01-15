@@ -1,3 +1,24 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: 2fancy
+  namespace: flux-system
+spec:
+  image: gcarrarom/2fancy
+  interval: 1m0s
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: 2fancy
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: 2fancy
+  policy:
+    semver:
+      range: '>=0.0.0'
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -15,8 +36,8 @@ spec:
       interval: 1m
   values:
     image:
-      repo: gcarrarom/2fancy
-      tag: 3
+      repo: gcarrarom/2fancy # {"$imagepolicy": "flux-system:2fancy:name"}
+      tag: 3 # {"$imagepolicy": "flux-system:2fancy:tag"}
     port: 80
     url: 2fancy.ca
     clusterissuer: letsencrypt-2fancy
