@@ -37,7 +37,7 @@ spec:
   values:
     image:
       repo: gcarrarom/2fancy # {"$imagepolicy": "flux-system:2fancy:name"}
-      tag: !!int 0.0.1 # {"$imagepolicy": "flux-system:2fancy:tag"}
+      tag: 0.0.1 # {"$imagepolicy": "flux-system:2fancy:tag"}
     port: 80
     url: 2fancy.ca
     clusterissuer: letsencrypt-2fancy
