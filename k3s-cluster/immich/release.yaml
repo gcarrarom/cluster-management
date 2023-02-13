@@ -20,6 +20,8 @@ spec:
       global:
         postgresql:
           auth:
+            username: immich
+            database: immich
             existingSecret: postgres-auth
     persistence:
       library:
