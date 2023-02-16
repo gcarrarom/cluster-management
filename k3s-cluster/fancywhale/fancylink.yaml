@@ -44,7 +44,7 @@ spec:
   values:
     image:
       repo: shlinkio/shlink # {"$imagepolicy": "flux-system:fancylink:name"}
-      tag: 3.5.1 # {"$imagepolicy": "flux-system:fancylink:tag"}
+      tag: 3.5.2 # {"$imagepolicy": "flux-system:fancylink:tag"}
     port: 8080
     env:
       DEFAULT_DOMAIN: fancywhale.link
