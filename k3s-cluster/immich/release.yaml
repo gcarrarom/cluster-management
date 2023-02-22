@@ -16,6 +16,20 @@ spec:
       interval: 1m
   values:
     common_env:
+      OAUTH_ENABLED: "true"
+      OAUTH_ISSUER_URL: "https://authentik.fancywhale.ca/application/o/immich/"
+      OAUTH_CLIENT_ID: "afd22fcf1016ae1528658967382a231b1d7d47b8"
+      OAUTH_CLIENT_SECRET:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: oauth_client_secret
+      OAUTH_BUTTON_TEXT: "Authentik SSO"
+      JWT_SECRET:
+        valueFrom:
+          secretKeyRef:
+            name: immich-secret
+            key: jwt_secret
       DB_PASSWORD: 
         valueFrom:
           secretKeyRef:
@@ -59,5 +73,18 @@ spec:
         - hosts:
           - immich.fancywhale.ca
           secretName: immich-fancywhale-ca-tls
-
-      
+    server:
+      image:
+        tag: v1.48.1
+    microservice:
+      image:
+        tag: v1.48.1
+    machine_learning:
+      image:
+        tag: v1.48.1
+    web:
+      image:
+        tag: v1.48.1
+    proxy:
+      image:
+        tag: v1.48.1
