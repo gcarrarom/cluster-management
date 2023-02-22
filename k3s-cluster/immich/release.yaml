@@ -17,7 +17,7 @@ spec:
   values:
     common_env:
       OAUTH_ENABLED: "true"
-      OAUTH_ISSUER_URL: "https://authentik.fancywhale.ca/application/o/immich/"
+      OAUTH_ISSUER_URL: "https://authentik.fancywhale.ca/application/o/immich/.well-known/openid-configuration"
       OAUTH_CLIENT_ID: "afd22fcf1016ae1528658967382a231b1d7d47b8"
       OAUTH_CLIENT_SECRET:
         valueFrom:
