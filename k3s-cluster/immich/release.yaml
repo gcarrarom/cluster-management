@@ -63,6 +63,16 @@ spec:
         ingressClassName: nginx
         annotations: 
           cert-manager.io/cluster-issuer: letsencrypt
+          nginx.ingress.kubernetes.io/proxy-body-size: 1G
+          nginx.org/proxy-body-size: 1G
+          nginx.org/client-max-body-size: "1G"
+          nginx.ingress.kubernetes.io/client-max-body-size: 1G
+          nginx.org/proxy-connect-timeout: 3600s
+          nginx.org/proxy-read-timeout: 3600s
+          nginx.org/proxy-send-timeout: 3600s
+          nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+          nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+          nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
         enabled: true
         primary: true
         hosts:
