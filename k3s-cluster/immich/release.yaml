@@ -90,6 +90,7 @@ spec:
       image:
         tag: *image-tag
     machine_learning:
+      command: [ "python", "src/main.py" ]
       image:
         tag: *image-tag
     web:
