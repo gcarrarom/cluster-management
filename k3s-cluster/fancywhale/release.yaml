@@ -28,4 +28,4 @@ spec:
   values:
     image:
       repo: gcarrarom/landing
-      tag: 0.1.0
+      tag: 0.2.0
