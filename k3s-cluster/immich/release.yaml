@@ -85,17 +85,16 @@ spec:
           secretName: immich-fancywhale-ca-tls
     server:
       image:
-        tag: v1.48.1
+        tag: &image-tag v1.48.1
     microservice:
       image:
-        tag: v1.48.1
+        tag: *image-tag
     machine_learning:
-      command: [ "python", "src/main.py" ]
       image:
-        tag: v1.48.1
+        tag: *image-tag
     web:
       image:
-        tag: v1.48.1
+        tag: *image-tag
     proxy:
       image:
-        tag: v1.48.1
+        tag: *image-tag
