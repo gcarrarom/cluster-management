@@ -85,7 +85,7 @@ spec:
           secretName: immich-fancywhale-ca-tls
     server:
       image:
-        tag: &image-tag v1.48.1
+        tag: &image-tag v1.49.0
     microservice:
       image:
         tag: *image-tag
