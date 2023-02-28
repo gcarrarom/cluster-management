@@ -54,6 +54,8 @@ spec:
     volumes:
     - name: vaultwarden-data
       path: /data
+    env:
+      ORG_EVENTS_ENABLED: true
     envFromSecret:
     - secretName: vaultwarden-secrets
       secretRef: true
