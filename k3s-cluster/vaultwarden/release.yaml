@@ -48,12 +48,14 @@ spec:
   values:
     image:
       repo: vaultwarden/server
-      tag: 1.26.0
+      tag: 1.27.0
     port: 80
     recreate: true
     volumes:
     - name: vaultwarden-data
       path: /data
+    env:
+      ORG_EVENTS_ENABLED: true
     envFromSecret:
     - secretName: vaultwarden-secrets
       secretRef: true
