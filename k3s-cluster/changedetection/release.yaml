@@ -17,7 +17,7 @@ spec:
     name: changedetection
   policy:
     semver:
-      range: '>=0.40.0.4'
+      range: '>=0.40.0'
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
