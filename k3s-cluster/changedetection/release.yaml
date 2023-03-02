@@ -37,5 +37,5 @@ spec:
   values:
     image:
       repo: dgtlmoon/changedetection.io # {"$imagepolicy": "flux-system:changedetection:name"}
-      tag: 0.40.0.4 # {"$imagepolicy": "flux-system:changedetection:tag"}
+      tag: 0.40.3 # {"$imagepolicy": "flux-system:changedetection:tag"}
     port: 5000
