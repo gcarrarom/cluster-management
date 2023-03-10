@@ -37,6 +37,7 @@ spec:
       storageClassName: nfs-client
     grafana.ini:
       server:
+        root_url: https://grafana.fancywhale.ca
         domain: grafana.fancywhale.ca
       auth.generic_oauth:
         name: OAuth
