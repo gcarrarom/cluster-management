@@ -56,5 +56,5 @@ spec:
         auth_url: https://auth.fancywhale.ca/application/o/authorize/
         token_url: https://auth.fancywhale.ca/application/o/token/
         api_url: https://auth.fancywhale.ca/application/o/userinfo/
-        allowed_domains: grafana.fancywhale.ca
+        allowed_domains: grafana.fancywhale.ca fancywhale.ca gmail.com outlook.com
         role_attribute_path: contains(groups[*], 'Grafana Admins') && 'Admin' || contains(groups[*], 'Grafana Editors') && 'Editor' || 'Viewer'
