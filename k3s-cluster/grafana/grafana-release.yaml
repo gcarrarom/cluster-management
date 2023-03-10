@@ -1,0 +1,51 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: grafana
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: grafana
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: grafana
+      interval: 1m
+  values:
+    extraSecretMounts:
+      - name: auth-generic-oauth-secret-mount
+        secretName: auth-generic-oauth-secret
+        defaultMode: 0440
+        mountPath: /etc/secrets/auth_generic_oauth
+        readOnly: true
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      enabled: true
+      hosts:
+        - "grafana.fancywhale.ca"
+      tls:
+        - hosts:
+          - grafana.fancywhale.ca
+          secretName: grafana-fancywhale-ca-tls
+    persistence:
+      enabled: true
+      storageClassName: nfs-client
+    grafana.ini:
+      server:
+        domain: grafana.fancywhale.ca
+      auth.generic_oauth:
+        name: OAuth
+        icon: signin
+        enabled: true
+        allow_sign_up: true
+        auto_login: true
+        client_id: 35ce8965e09a5fb05e032d038b06e7e8382eaf09
+        client_secret: $__file{/etc/secrets/auth_generic_oauth/client_secret}
+        auth_url: https://auth.fancywhale.ca/application/o/authorize/
+        token_url: https://auth.fancywhale.ca/application/o/token/
+        api_url: https://auth.fancywhale.ca/application/o/userinfo/
+        allowed_domains: grafana.fancywhale.ca
