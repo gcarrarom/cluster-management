@@ -49,5 +49,5 @@ spec:
         client_secret: $__file{/etc/secrets/auth_generic_oauth/client_secret}
         auth_url: https://auth.fancywhale.ca/application/o/authorize/
         token_url: https://auth.fancywhale.ca/application/o/token/
-        api_url: https://auth.fancywhale.ca/application/o/userinfo/
+        api_url: https://auth.fancywhale.ca/application/o/userinfo
         allowed_domains: grafana.fancywhale.ca
