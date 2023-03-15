@@ -26,6 +26,10 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt
       hosts:
       - pihole.fancywhale.ca
+      tls:
+        - hosts:
+          - pihole.fancywhale.ca
+          secretName: pihole-fancywhale-ca-tls
     persistentVolumeClaim:
       enabled: true
       accessModes:
