@@ -17,14 +17,14 @@ spec:
   values:
     common_env:
       OAUTH_ENABLED: "true"
-      OAUTH_ISSUER_URL: "https://authentik.fancywhale.ca/application/o/immich/.well-known/openid-configuration"
+      OAUTH_ISSUER_URL: "https://auth.fancywhale.ca/application/o/immich/.well-known/openid-configuration"
       OAUTH_CLIENT_ID: "afd22fcf1016ae1528658967382a231b1d7d47b8"
       OAUTH_CLIENT_SECRET:
         valueFrom:
           secretKeyRef:
             name: immich-secret
             key: oauth_client_secret
-      OAUTH_BUTTON_TEXT: "Authentik SSO"
+      OAUTH_BUTTON_TEXT: "FancyWhale Login"
       JWT_SECRET:
         valueFrom:
           secretKeyRef:
