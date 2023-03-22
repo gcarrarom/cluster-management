@@ -1,0 +1,34 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kuma
+  namespace: kuma
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: main
+      sourceRef:
+        kind: GitRepository
+        name: fancychart
+        namespace: kuma
+      interval: 1m
+  values:
+    image:
+      repo: louislam/uptime-kuma # {"$imagepolicy": "flux-system:kuma:name"}
+      tag: 1.21.0 # {"$imagepolicy": "flux-system:kuma:tag"}
+    port: 3001
+    env: {}
+    ingress:
+      annotations:
+        nginx.ingress.kubernetes.io/auth-url: |-
+            http://authentik.identity.svc.cluster.local/outpost.goauthentik.io/auth/nginx
+        nginx.ingress.kubernetes.io/auth-signin: |-
+            https://kuma.fancywhale.ca/outpost.goauthentik.io/start?rd=$escaped_request_uri
+        nginx.ingress.kubernetes.io/auth-response-headers: |-
+            Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
+        nginx.ingress.kubernetes.io/auth-snippet: |
+            proxy_set_header X-Forwarded-Host $http_host;
+    volumes:
+      - name: kuma-data
+        path: /app/data
