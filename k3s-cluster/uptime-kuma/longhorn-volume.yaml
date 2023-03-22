@@ -1,0 +1,30 @@
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  name: kuma-data
+spec:
+  Standby: false
+  accessMode: rwo
+  backingImage: ""
+  baseImage: ""
+  dataLocality: disabled
+  dataSource: ""
+  disableFrontend: false
+  diskSelector: []
+  encrypted: false
+  engineImage: longhornio/longhorn-engine:v1.4.0
+  fromBackup: ""
+  frontend: blockdev
+  lastAttachedBy: ""
+  migratable: false
+  migrationNodeID: ""
+  nodeSelector: []
+  numberOfReplicas: 3
+  recurringJobs: []
+  replicaAutoBalance: ignored
+  restoreVolumeRecurringJob: ignored
+  revisionCounterDisabled: false
+  size: "5368709120"
+  snapshotDataIntegrity: ignored
+  staleReplicaTimeout: 20
+  unmapMarkSnapChainRemoved: ignored
