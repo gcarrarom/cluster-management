@@ -4,4 +4,3 @@ namespace: kuma
 resources:
 - namespace.yaml
 - chart.yaml
-- longhorn-volume.yaml
