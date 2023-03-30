@@ -1,0 +1,22 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    email: gmartins@fancywhale.ca
+    privateKeySecretRef:
+      name: issuer-account-key
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - dns01:
+        azureDNS:
+          clientID: 58a2a4ff-6426-4f6d-b4d9-e98be55844db
+          clientSecretSecretRef:
+            key: client-secret
+            name: azuredns-config-fancywhale
+          environment: AzurePublicCloud
+          hostedZoneName: fancywhale.ca
+          resourceGroupName: fancywhale
+          subscriptionID: e1ae4488-8ac8-4d66-a72d-fe07907d1571
+          tenantID: 2952ab0d-7932-43dd-8089-0a4256779fb1

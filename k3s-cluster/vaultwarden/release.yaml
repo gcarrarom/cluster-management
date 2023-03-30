@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: bitnami
-  namespace: vaultwarden
+  namespace: fancywhale
 spec:
   interval: 1m
   url: https://charts.bitnami.com/bitnami
@@ -20,7 +20,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bitnami
-        namespace: vaultwarden
+        namespace: fancywhale
       interval: 1m
   values:
     auth:
@@ -43,7 +43,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: fancychart
-        namespace: vaultwarden
+        namespace: fancywhale
       interval: 1m
   values:
     image:
@@ -55,6 +55,7 @@ spec:
     - name: vaultwarden-data
       path: /data
     env:
+      RUST_BACKTRACE: 1
       ORG_EVENTS_ENABLED: true
     envFromSecret:
     - secretName: vaultwarden-secrets

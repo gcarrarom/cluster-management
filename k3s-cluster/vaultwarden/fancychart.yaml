@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
   name: fancychart
-  namespace: vaultwarden
+  namespace: fancywhale
 spec:
   interval: 1m
   url: https://github.com/gcarrarom/fancychart

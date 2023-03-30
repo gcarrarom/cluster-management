@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: fancychart
-        namespace: kuma
+        namespace: fancywhale
       interval: 1m
   values:
     image:
@@ -40,3 +40,6 @@ spec:
     volumes:
       - name: kuma-data
         path: /app/data
+        size: 10G
+        createPVC: true
+        storageClassName: longhorn
